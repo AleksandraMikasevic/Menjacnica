@@ -5,7 +5,7 @@ import java.util.LinkedList;
 public class Valuta {
 private String naziv;
 private String skraceniNaziv;
-private LinkedList<Kurs> kursevi = new LinkedList<Kurs>();
+private static LinkedList<Kurs> kursevi = new LinkedList<Kurs>();
 
 public String getNaziv() {
 	return naziv;
@@ -21,12 +21,13 @@ public void setSkraceniNaziv(String skraceniNaziv) {
 	if(naziv == null || naziv.isEmpty() == true) throw new RuntimeException("Nije uneta odgovarajuca vrednost.");
 	this.skraceniNaziv = skraceniNaziv;
 }
-public LinkedList<Kurs> getKursevi() {
+public static LinkedList<Kurs> getKursevi() {
 	return kursevi;
 }
-public void setKursevi(LinkedList<Kurs> kursevi) {
-	if(kursevi == null || kursevi.isEmpty() == true) throw new RuntimeException("Nije uneta odgovarajuca vrednost.");
-	this.kursevi = kursevi;
+
+public static void setKursevi(LinkedList<Kurs> kursevi) {
+	if(kursevi.isEmpty() == true || kursevi == null) throw new RuntimeException("Nije uneta odgovarajuca vrednost.");
+	Valuta.kursevi = kursevi;
 }
 @Override
 public int hashCode() {
